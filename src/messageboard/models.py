@@ -14,7 +14,7 @@ class InputText(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     
     
     def __str__(self):

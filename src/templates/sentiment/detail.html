@@ -19,7 +19,7 @@
 		<h2><strong>Options</strong></h2>
 		<hr/>
 		<br/>
-		<a href="{% url 'sent_list' %}"><img src="{% static 'vitali/images/portfolio/back.jpg' %}" />
+		<a href="{% url 'sent_list' %}"><img src="{% static 'vitali/images/portfolio/5.jpg' %}" />
 		<a href="{{ object.get_absolute_url }}update/"><img src="{% static 'vitali/images/portfolio/update.jpg' %}" />
 		<a href="{{ object.get_absolute_url }}delete/"><img src="{% static 'vitali/images/portfolio/del.jpg' %}" />
 	</div>
@@ -39,9 +39,17 @@
 		<a href='#' class='change_type' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
 	</div>
 
-<div class="row">
-	<div class="col-sm-12 text-center divider"><a href="#details"><img src="{% static 'vitali/images/portfolio/details.jpg' %}" /></a></div>
-</div>
+
+	
+	<div class="row">
+        <div class="col-lg-4 text-center divider">
+          <a href="{% url 'sent_create' %}"><img src="{% static 'vitali/images/portfolio/back.jpg' %}" /></a>
+        </div>
+        <div class="col-lg-4 text-center divider">
+          <a href="#details"><img src="{% static 'vitali/images/portfolio/details.jpg' %}" /></a>
+       </div>
+        
+    </div>
 </div>
 
 
@@ -74,9 +82,9 @@
 		<hr/>
 		<br/>
 
-		<a href='#' class='change_type' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
-		<a href='#' class='change_type' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
-		<a href='#' class='change_type' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
+		<a href='#' class='change_type2' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
+		<a href='#' class='change_type2' id='bar'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
+		<a href='#' class='change_type2' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
 	</div>
   </div>
   <br/><br/>
@@ -96,14 +104,83 @@
 		<hr/>
 		<br/>
 
-		<a href='#' class='change_type' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
-		<a href='#' class='change_type' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
-		<a href='#' class='change_type' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
+		<a href='#' class='change_type3' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
+		<a href='#' class='change_type3' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
+		<a href='#' class='change_type3' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
 	</div>
   </div>
-  <br/><br/>
+  <br/><br/><hr/>
+  <div class="row">
+	<div class="col-sm-12 text-center">
+		<h1><strong>Sentiment Analysis using Machine Learning Techniques</strong></h1>
+	</div>
+	
+	
+	
+	
+		<h2 class="lead text-center divider"><strong>Sentiment Rating System</strong></h2>
+		<hr/>
+		  <p class="lead">This Table represents the rating system of the Sentiment Analysis. Five different Machine Learning Algorithms were trained
+		  to predict the sentiment of the given Text. The Confidence of the Result is the average of all Algorithms.</p>                                                                                      
+		  <div class="table-responsive">          
+		  <table class="table lead">
+			<thead>
+			  <tr>
+				<th>#</th>
+				<th>Rating</th>
+				<th>Results</th>
+				
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td>1</td>
+				<td><strong>5 Star Rating</strong></td>
+				<td><img src="{% static 'vitali/images/portfolio/5star.jpg' %}" /></td>
+				
+			  </tr>
+			  <tr>
+				<td>2</td>
+				<td>4 Star Rating</td>
+				<td><img src="{% static 'vitali/images/portfolio/4star.jpg' %}" /></td>
+				
+			  </tr>
+			  <tr>
+				<td>3</td>
+				<td>3 Star Rating</td>
+				<td><img src="{% static 'vitali/images/portfolio/3star.jpg' %}" /></td>
+				
+			  </tr>
+			  <tr>
+				<td>4</td>
+				<td>2 Star Rating</td>
+				<td><img src="{% static 'vitali/images/portfolio/2star.jpg' %}" /></td>
+				
+			  </tr>
+			  <tr>
+				<td>5</td>
+				<td>1 Star Rating</td>
+				<td><img src="{% static 'vitali/images/portfolio/1star.jpg' %}" /></td>
+				
+			  </tr>
+			    <tr>
+				<td>6</td>
+				<td>0 Star Rating</td>
+				<td><img src="{% static 'vitali/images/portfolio/0star.jpg' %}" /></td>
+				
+			  </tr>
+			</tbody>
+		  </table>
+  </div>
+	  
+	  
+	  
+	  
+	  
+	</div>
+  <hr/>
 </div>
-{{nC1}}
+
 {% endblock content %}
 
 {% block javascript %}
@@ -219,7 +296,7 @@ $(function () {
             showEmpty: false
         },
         series: [{
-        	type: 'pie',
+        	type: 'bar',
         	allowPointSelect: true,
         	data: [
         	['Stop Words', {{stopWords}}],
@@ -235,7 +312,7 @@ $(function () {
 
 
 
-$('.change_type').click(function(e) {
+$('.change_type2').click(function(e) {
 	e.preventDefault();
 	chartType = $(this).attr('id');
     var chart = $("#hc_container2").highcharts();
@@ -302,7 +379,7 @@ $(function () {
 
 
 
-$('.change_type').click(function(e) {
+$('.change_type3').click(function(e) {
 	e.preventDefault();
 	chartType = $(this).attr('id');
     var chart = $("#hc_container3").highcharts();

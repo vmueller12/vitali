@@ -82,6 +82,28 @@
   <br/><br/>
 </div>
 
+<div class='container'>
+	<br/><br/>
+  <div class="row">
+		<div class="col-sm-9 text-center">
+		<h2><strong>Top Frequent used Words without Stop Words:</strong></h2>
+		<hr/>
+		<br/>
+		<div id="hc_container3" style="width:100%; height:400px;"></div>
+	</div>
+	<div class="col-sm-3 text-center">
+		<h2><strong>Chose another Chart</strong></h2>
+		<hr/>
+		<br/>
+
+		<a href='#' class='change_type' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
+		<a href='#' class='change_type' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
+		<a href='#' class='change_type' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
+	</div>
+  </div>
+  <br/><br/>
+</div>
+{{nC1}}
 {% endblock content %}
 
 {% block javascript %}
@@ -222,6 +244,75 @@ $('.change_type').click(function(e) {
 });
 
 </script>
+
+
+
+<script>
+$(document).ready(function(){
+
+	function changeType(chart, series, newType) {
+		newType = newType.toLowerCase();
+		for (var i = 0; i < series.length; i++ ) {
+			series = series[0];
+			try {
+				series.chart.addSeries({
+					type: newType,
+					stack: series.stack,
+					yaxis: series.yaxis,
+					name: series.name,
+					color: series.color,
+					data: series.options.data
+				},
+				false
+				)
+				series.remove();
+			} catch(e) {
+				alert(newType & ": " & e);
+			}
+		}
+
+	};
+
+$(function () { 
+    $('#hc_container3').highcharts({
+        title: {
+            text: '{{object.title}}'
+        },
+        xAxis: {
+            categories: ['{{wC1}}', '{{wC2}}', '{{wC3}}', '{{wC4}}', '{{wC5}}'],
+           showEmpty: false
+        },
+        yAxis: {
+            showEmpty: false
+        },
+        series: [{
+        	type: 'pie',
+        	allowPointSelect: true,
+        	data: [
+        	['{{wC1}}', {{nC1}}],
+        	['{{wC2}}', {{nC2}}],
+        	['{{wC3}}', {{nC3}}],
+        	['{{wC4}}', {{nC4}}],
+        	['{{wC5}}', {{nC5}}],
+        	],
+        	showInLegend: true
+        }]
+    });
+});
+
+
+
+$('.change_type').click(function(e) {
+	e.preventDefault();
+	chartType = $(this).attr('id');
+    var chart = $("#hc_container3").highcharts();
+	changeType(chart, chart.series, chartType)
+	});
+});
+
+</script>
+
+
 
 
 {% endblock javascript %}

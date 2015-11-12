@@ -109,6 +109,8 @@ class SentimentDetail(DetailView):
             qrsAnalysis = SentAnalysis.objects.get(slug=self.object.slug)
             topW = TopWordsRetriever(qrsAnalysis.topWords)
             words, num = topW.topWords()
+            #topCl = TopWordsRetriever(qrsAnalysis.topFiveWordsCleaned)
+            #wC, nC = topC1.topWords()
             context['stopWords'] = qrsAnalysis.stopWords
             context['totalWords'] = qrsAnalysis.totalWords
             context['averageWPS'] = int(qrsAnalysis.avWordsSentence)
@@ -124,8 +126,25 @@ class SentimentDetail(DetailView):
             context['num3'] = num[2]
             context['num4'] = num[3]
             context['num5'] = num[4]
+            
+            topCL = TopWordsRetriever(qrsAnalysis.topFiveWordsCleaned)
+            wC, nC = topCL.topWords()
+            
+            
+            context['wC1'] = wC[0]
+            context['wC2'] = wC[1]
+            context['wC3'] = wC[2]
+            context['wC4'] = wC[3]
+            context['wC5'] = wC[4]
+            context['nC1'] = nC[0]
+            context['nC2'] = nC[1]
+            context['nC3'] = nC[2]
+            context['nC4'] = nC[3]
+            context['nC5'] = nC[4]
+            
         except:
             pass
+        print(context)
         return context
     
     

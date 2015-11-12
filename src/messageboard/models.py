@@ -16,6 +16,7 @@ class InputText(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     slug = models.SlugField()
     
+    
     def __str__(self):
         return self.title
     

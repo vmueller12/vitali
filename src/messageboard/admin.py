@@ -4,9 +4,12 @@ from django.contrib import admin
 from .models import InputText, SentAnalysis
 
 class InputTextModel(admin.ModelAdmin):
-    list_display = ("title", "content", "slug")
+    list_display = ("title", "content", "slug", "created",)
     prepopulated_fields = {"slug": ("title",)}
+    
+class SentModel(admin.ModelAdmin):
+    list_display = ("__str__", "stopWords", "totalWords",)
 
 admin.site.register(InputText, InputTextModel)
-admin.site.register(SentAnalysis)
+admin.site.register(SentAnalysis, SentModel)
 

@@ -1,0 +1,14 @@
+beautifulsoup4==4.4.1
+Django==1.8.6
+django-contrib-comments==1.6.1
+django-crispy-forms==1.5.2
+django-markdown==0.8.4
+django-mptt==0.7.4
+django-tagging==0.4
+django-xmlrpc==0.1.5
+Markdown==2.6.4
+mots-vides==2015.5.11
+nltk==3.1
+Pillow==3.0.0
+pyparsing==2.0.5
+pytz==2015.7

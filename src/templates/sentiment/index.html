@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Text & Sentiment Analysis</h1>
+            <hr/><br/><br/>
+
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <form method="post" action="">{% csrf_token %}
+            {{form|crispy}}
+            
+            <input class="btn btn-success" type="submit" value="Analyse my Text" />
+            </form>
+            <br/><br/><br/><br/>
+        </div>
+    </div>
+</div>
+{% endblock %}

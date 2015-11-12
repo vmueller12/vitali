@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load django_markdown %}
+
+{% block content %}
+
+{% for object in object_list %}
+
+<h1>{{object.title}}</h1>
+{{object.image}}
+<p>{{object.created}}</p>
+<p>Tagged under: {{ object.tags.all|join:", " }}</p>
+
+<p>{{object.body|markdown}}</p>
+{% endfor %}
+
+
+{% endblock content %}

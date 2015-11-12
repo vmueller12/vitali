@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <ul class="list-group">
+            {% for object in object_list %}
+            <li class="list-group-item"> <a href="{{ object.get_absolute_url }}"><strong>{{ object }}</strong></a> </li>
+            {% empty %}
+            <li class="list-group-item">You have no lists</li>
+            {% endfor %}
+        </ul>
+    </div>
+<div class="col-sm-3">
+<p><a href="{% url 'sent_create' %}" class="btn"><img src="{% static 'vitali/images/portfolio/14.jpg' %}" /></a></p> </div> </div>
+</div>
+
+
+
+{% endblock content %}
+

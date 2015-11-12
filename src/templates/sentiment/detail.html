@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+<div class="row">
+	<div class="col-sm-2 text-center">
+		<h2><strong>Options</strong></h2>
+		<hr/>
+		<br/>
+		<a href="{% url 'sent_list' %}"><img src="{% static 'vitali/images/portfolio/back.jpg' %}" />
+		<a href="{{ object.get_absolute_url }}update/"><img src="{% static 'vitali/images/portfolio/update.jpg' %}" />
+		<a href="{{ object.get_absolute_url }}delete/"><img src="{% static 'vitali/images/portfolio/del.jpg' %}" />
+	</div>
+	<div class="col-sm-7 text-center">
+		<h2><strong>Top 5 Frequent used Words</strong></h2>
+		<hr/>
+		<br/>
+		<div id="hc_container" style="width:100%; height:400px;"></div>
+	</div>
+	<div class="col-sm-3 text-center">
+		<h2><strong>Chose another Chart</strong></h2>
+		<hr/>
+		<br/>
+
+		<a href='#' class='change_type' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
+		<a href='#' class='change_type' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
+		<a href='#' class='change_type' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
+	</div>
+</div>
+
+
+	<br/><br/><br/>
+    <div class="row">
+        <div class="col-md-12 text-center">
+             <h1> {{object.title}}</h1>
+			 <hr/>
+			  <br/>
+        </div>
+       <div class="col-md-12">
+        <p class="lead">{{object.content}}</p>
+       </div>
+    </div>
+</div>
+
+
+
+  <div class='container'>
+  <div class='col-sm-6 col-md-offset-3 text-center'>
+  <a href='#' class='change_type' id='pie'>Pie</a>
+    <a href='#' class='change_type' id='column'>Column</a>
+    <a href='#' class='change_type' id='line'>Line</a>
+	<div id="hc_container2" style="width:100%; height:400px;"></div>
+</div>
+</div>
+
+{% endblock content %}
+
+{% block javascript %}
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+<script>
+$(document).ready(function(){
+
+	function changeType(chart, series, newType) {
+		newType = newType.toLowerCase();
+		for (var i = 0; i < series.length; i++ ) {
+			series = series[0];
+			try {
+				series.chart.addSeries({
+					type: newType,
+					stack: series.stack,
+					yaxis: series.yaxis,
+					name: series.name,
+					color: series.color,
+					data: series.options.data
+				},
+				false
+				)
+				series.remove();
+			} catch(e) {
+				alert(newType & ": " & e);
+			}
+		}
+
+	};
+
+$(function () { 
+    $('#hc_container').highcharts({
+        title: {
+            text: '{{object.title}}'
+        },
+        xAxis: {
+            categories: ['{{word1}}', '{{word2}}', '{{word3}}', '{{word4}}', '{{word5}}'],
+           showEmpty: false
+        },
+        yAxis: {
+            showEmpty: false
+        },
+        series: [{
+        	type: 'pie',
+        	allowPointSelect: true,
+        	data: [
+        	['{{word1}}', {{num1}}],
+        	['{{word2}}', {{num2}}],
+        	['{{word3}}', {{num3}}],
+        	['{{word4}}', {{num4}}],
+        	['{{word5}}', {{num5}}],
+        	],
+        	showInLegend: true
+        }]
+    });
+});
+
+
+
+$('.change_type').click(function(e) {
+	e.preventDefault();
+	chartType = $(this).attr('id');
+    var chart = $("#hc_container").highcharts();
+	changeType(chart, chart.series, chartType)
+	});
+});
+
+</script>
+
+
+
+
+<script>
+$(document).ready(function(){
+
+	function changeType(chart, series, newType) {
+		newType = newType.toLowerCase();
+		for (var i = 0; i < series.length; i++ ) {
+			series = series[0];
+			try {
+				series.chart.addSeries({
+					type: newType,
+					stack: series.stack,
+					yaxis: series.yaxis,
+					name: series.name,
+					color: series.color,
+					data: series.options.data
+				},
+				false
+				)
+				series.remove();
+			} catch(e) {
+				alert(newType & ": " & e);
+			}
+		}
+
+	};
+
+$(function () { 
+    $('#hc_container2').highcharts({
+        title: {
+            text: '{{object.title}}'
+        },
+        xAxis: {
+            categories: ['{{word1}}', '{{word2}}', '{{word3}}', '{{word4}}', '{{word5}}'],
+           showEmpty: false
+        },
+        yAxis: {
+            showEmpty: false
+        },
+        series: [{
+        	type: 'pie',
+        	allowPointSelect: true,
+        	data: [
+        	['{{word1}}', {{num1}}],
+        	['{{word2}}', {{num2}}],
+        	['{{word3}}', {{num3}}],
+        	['{{word4}}', {{num4}}],
+        	['{{word5}}', {{num5}}],
+        	],
+        	showInLegend: true
+        }]
+    });
+});
+
+
+
+$('.change_type').click(function(e) {
+	e.preventDefault();
+	chartType = $(this).attr('id');
+    var chart = $("#hc_container2").highcharts();
+	changeType(chart, chart.series, chartType)
+	});
+});
+
+</script>
+
+
+{% endblock javascript %}

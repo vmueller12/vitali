@@ -4,7 +4,11 @@
 {% block content %}
 <div class="container">
 <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-9 text-center">
+        <h2><strong>List of Different Text and Sentiment Analysis</strong></h2>
+		<hr/>
+		<br/>
+        <br/>
         <ul class="list-group">
             {% for object in object_list %}
             <li class="list-group-item"> <a href="{{ object.get_absolute_url }}"><strong>{{ object }}</strong></a> </li>
@@ -14,7 +18,13 @@
         </ul>
     </div>
 <div class="col-sm-3">
-<p><a href="{% url 'sent_create' %}" class="btn"><img src="{% static 'vitali/images/portfolio/14.jpg' %}" /></a></p> </div> </div>
+        <h2><strong>Create NEW</strong></h2>
+		<hr/>
+		<br/>
+        Try out the Sentiment Analysis in 2 simple steps.
+        Click on the Newspaper. Copy and Paste any Text.
+        Thats it!
+        <p style="padding: 0; margin: 0;"><a href="{% url 'sent_create' %}" class="btn"><img src="{% static 'vitali/images/portfolio/14.jpg' %}" /></a></p> </div> </div>
 </div>
 
 

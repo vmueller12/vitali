@@ -7,6 +7,8 @@ from django.views.generic import ListView
 from django.views.generic import CreateView
 
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
+
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .sentiment import Sentiment, TopWordsRetriever

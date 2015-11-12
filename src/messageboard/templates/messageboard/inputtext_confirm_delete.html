@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form action="" method="post">{% csrf_token %}
+            
+                <br/><br/><br/>
+                <h1>Are you sure you want to delete "{{object}}"?</h1>
+                <br/>
+
+                <input class="btn btn-danger" type="submit" value="Confirm" />
+                <a class="btn btn-success" href="{% url 'sent_list' %}">Cancel</a>
+                <br/>
+                <br/>
+                <br/>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -3,6 +3,16 @@
 
 
 {% block content %}
+<style>
+
+.divider {
+	
+	padding-top: 60px !important;
+	
+	}	
+	
+</style>
+
 <div class="container">
 <div class="row">
 	<div class="col-sm-2 text-center">
@@ -28,6 +38,10 @@
 		<a href='#' class='change_type' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
 		<a href='#' class='change_type' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
 	</div>
+
+<div class="row">
+	<div class="col-sm-12 text-center divider"><a href="#details"><img src="{% static 'vitali/images/portfolio/details.jpg' %}" /></a></div>
+</div>
 </div>
 
 
@@ -46,13 +60,26 @@
 
 
 
-  <div class='container'>
-  <div class='col-sm-6 col-md-offset-3 text-center'>
-  <a href='#' class='change_type' id='pie'>Pie</a>
-    <a href='#' class='change_type' id='column'>Column</a>
-    <a href='#' class='change_type' id='line'>Line</a>
-	<div id="hc_container2" style="width:100%; height:400px;"></div>
-</div>
+<div class='container' id="details">
+	<br/><br/>
+  <div class="row">
+		<div class="col-sm-9 text-center">
+		<h2><strong>More Details...</strong></h2>
+		<hr/>
+		<br/>
+		<div id="hc_container2" style="width:100%; height:400px;"></div>
+	</div>
+	<div class="col-sm-3 text-center">
+		<h2><strong>Chose another Chart</strong></h2>
+		<hr/>
+		<br/>
+
+		<a href='#' class='change_type' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
+		<a href='#' class='change_type' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
+		<a href='#' class='change_type' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
+	</div>
+  </div>
+  <br/><br/>
 </div>
 
 {% endblock content %}
@@ -163,7 +190,7 @@ $(function () {
             text: '{{object.title}}'
         },
         xAxis: {
-            categories: ['{{word1}}', '{{word2}}', '{{word3}}', '{{word4}}', '{{word5}}'],
+            categories: ['Stop Words', 'Total Words', 'Average Words in Sentence', 'Total Sentences', 'Ratio Total Words / Stop Words'],
            showEmpty: false
         },
         yAxis: {
@@ -173,11 +200,11 @@ $(function () {
         	type: 'pie',
         	allowPointSelect: true,
         	data: [
-        	['{{word1}}', {{num1}}],
-        	['{{word2}}', {{num2}}],
-        	['{{word3}}', {{num3}}],
-        	['{{word4}}', {{num4}}],
-        	['{{word5}}', {{num5}}],
+        	['Stop Words', {{stopWords}}],
+        	['Total Words', {{totalWords}}],
+        	['Average Words in Sentence', {{averageWPS}}],
+        	['Total Sentences', {{totalSentences}}],
+        	['Ratio Total Words / Stop Words', {{ratioWS}}],
         	],
         	showInLegend: true
         }]

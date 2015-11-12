@@ -37,6 +37,7 @@ class SentAnalysis(models.Model):
     avWordsSentence = models.DecimalField(max_digits=1000, decimal_places=2)
     totalSentences = models.IntegerField()
     topWords = models.TextField()
+    topFiveWordsCleaned = models.TextField()
     ratioTotalStopwords = models.DecimalField(max_digits=200, decimal_places=2)
     slug = models.SlugField()
     #ratioWordsSentences = models.DecimalField(max_digits=200, decimal_places=2)

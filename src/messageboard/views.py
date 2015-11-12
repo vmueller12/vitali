@@ -40,7 +40,10 @@ class SentimentUpdate(UpdateView):
             sent.totalWords =  int(ins.totalWords())
             sent.totalSentences = int(ins.totalSentences())
             topFive = ins.topFiveWords()
+            topCleaned = ins.topFiveWordsCleaned()
             topWords = ",".join("(%s,%s)" % tup for tup in topFive)
+            topWCleaned = ",".join("(%s,%s)" % tup for tup in topCleaned)
+            sent.topFiveWordsCleaned = topWCleaned
             sent.topWords = topWords
             sent.stopWords = int(ins.stopwordsCounter())
             sent.slug = self.object.slug
@@ -70,7 +73,10 @@ class SentimentCreate(CreateView):
             sent.totalWords =  int(ins.totalWords())
             sent.totalSentences = int(ins.totalSentences())
             topFive = ins.topFiveWords()
+            topCleaned = ins.topFiveWordsCleaned()
             topWords = ",".join("(%s,%s)" % tup for tup in topFive)
+            topWCleaned = ",".join("(%s,%s)" % tup for tup in topCleaned)
+            sent.topFiveWordsCleaned = topWCleaned
             sent.topWords = topWords
             sent.stopWords = int(ins.stopwordsCounter())
             sent.slug = self.object.slug
@@ -93,9 +99,6 @@ class SentimentCreate(CreateView):
 class SentimentDetail(DetailView):
     template_name = 'sentiment/detail.html'
     model = InputText
-    #print(model.title)
-    
-    #qrsAnalysis = SentAnalysis.objects.get()
     
     
     def get_context_data(self, **kwargs):
@@ -123,7 +126,6 @@ class SentimentDetail(DetailView):
             context['num5'] = num[4]
         except:
             pass
-        print(context)
         return context
     
     

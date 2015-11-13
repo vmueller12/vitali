@@ -120,57 +120,62 @@
 	
 		<h2 class="lead text-center divider"><strong>Sentiment Rating System</strong></h2>
 		<hr/>
-		  <p class="lead">This Table represents the rating system of the Sentiment Analysis. Five different Machine Learning Algorithms were trained
+		  <br/>
+		  <p class="lead">This Table shows the rating system of the Sentiment Analysis Algorithm. Five different Machine Learning Algorithms were trained
 		  to predict the sentiment of the given Text. The Confidence of the Result is the average of all Algorithms.</p>                                                                                      
+		  <br/>
+		  <hr/>
+		  <br/>
 		  <div class="table-responsive">          
 		  <table class="table lead">
 			<thead>
 			  <tr>
-				<th>#</th>
-				<th>Rating</th>
-				<th>Results</th>
+				<th class="text-center">#</th>
+				<th class="text-center">Rating</th>
+				<th class="text-center">Results</th>
 				
 			  </tr>
 			</thead>
-			<tbody>
+			<tbody class="text-center">
 			  <tr>
 				<td>1</td>
-				<td><strong>5 Star Rating</strong></td>
+				<td style="color: #4a8832"><strong>5 Star Rating</strong></td>
 				<td><img src="{% static 'vitali/images/portfolio/5star.jpg' %}" /></td>
 				
 			  </tr>
 			  <tr>
 				<td>2</td>
-				<td>4 Star Rating</td>
+				<td style="color: #328885"><strong>4 Star Rating</strong></td>
 				<td><img src="{% static 'vitali/images/portfolio/4star.jpg' %}" /></td>
 				
 			  </tr>
 			  <tr>
 				<td>3</td>
-				<td>3 Star Rating</td>
+				<td style="color: #326988"><strong>3 Star Rating</strong></td>
 				<td><img src="{% static 'vitali/images/portfolio/3star.jpg' %}" /></td>
 				
 			  </tr>
 			  <tr>
 				<td>4</td>
-				<td>2 Star Rating</td>
+				<td style="color: #323c88"><strong>2 Star Rating</strong></td>
 				<td><img src="{% static 'vitali/images/portfolio/2star.jpg' %}" /></td>
 				
 			  </tr>
 			  <tr>
 				<td>5</td>
-				<td>1 Star Rating</td>
+				<td style="color: #eeb61f"><strong>1 Star Rating</strong></td>
 				<td><img src="{% static 'vitali/images/portfolio/1star.jpg' %}" /></td>
 				
 			  </tr>
 			    <tr>
 				<td>6</td>
-				<td>0 Star Rating</td>
+				<td style="color: #ee1f1f"><strong>0 Star Rating</strong></td>
 				<td><img src="{% static 'vitali/images/portfolio/0star.jpg' %}" /></td>
 				
 			  </tr>
 			</tbody>
 		  </table>
+		  
   </div>
 	  
 	  
@@ -179,6 +184,30 @@
 	  
 	</div>
   <hr/>
+  <div class="row">
+	<div class="col-md-12 text-center">
+		<h1>Algorithmic Results</h1>
+		<br/>
+	</div>
+	<div class="col-md-4">
+		<h2>Category & Confidence</h2>
+		<hr/>
+		<p class="lead"><strong><span style="color: green">Cate</span><span style="color: red">gory:</span></strong></p>
+		<p class="lead" style="color: #0000ff"><strong>Confidence:</strong></p>
+	</div>
+	<div class="col-md-4 text-center">
+		<h2>Smilie Rating:</h2>
+		<hr/>
+	</div>
+	<div class="col-md-4 text-center">
+		<h2>Optimize your Writting</h2>
+		<hr/>
+		<a href="{{ object.get_absolute_url }}update/"><img src="{% static 'vitali/images/portfolio/update.jpg' %}" />
+	</div>
+	
+	
+	
+  </div>
 </div>
 
 {% endblock content %}

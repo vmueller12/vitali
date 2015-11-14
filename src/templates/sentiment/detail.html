@@ -15,13 +15,17 @@
 
 <div class="container">
 <div class="row">
+	<div class="col-sm-12 text-center">
+			<h1><strong><u>Sentiment Analysis</u></strong></h1>
+			<br/><br/>
+	</div>
 	<div class="col-sm-2 text-center">
 		<h2><strong>Options</strong></h2>
 		<hr/>
 		<br/>
 		<a href="{% url 'sent_list' %}"><img src="{% static 'vitali/images/portfolio/5.jpg' %}" />
-		<a href="{{ object.get_absolute_url }}update/"><img src="{% static 'vitali/images/portfolio/update.jpg' %}" />
 		<a href="{{ object.get_absolute_url }}delete/"><img src="{% static 'vitali/images/portfolio/del.jpg' %}" />
+		<a href="{{ object.get_absolute_url }}update/"><img src="{% static 'vitali/images/portfolio/update.jpg' %}" />
 	</div>
 	<div class="col-sm-7 text-center">
 		<h2><strong>Top 5 Frequent used Words</strong></h2>
@@ -71,6 +75,7 @@
 <div class='container' id="details">
 	<br/><br/>
   <div class="row">
+		
 		<div class="col-sm-9 text-center">
 		<h2><strong>More Details...</strong></h2>
 		<hr/>
@@ -93,6 +98,7 @@
 <div class='container'>
 	<br/><br/>
   <div class="row">
+
 		<div class="col-sm-9 text-center">
 		<h2><strong>Top Frequent used Words without Stop Words:</strong></h2>
 		<hr/>
@@ -109,20 +115,17 @@
 		<a href='#' class='change_type3' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
 	</div>
   </div>
-  <br/><br/><hr/>
+  <br/><br/>
   <div class="row">
-	<div class="col-sm-12 text-center">
-		<h1><strong>Sentiment Analysis using Machine Learning Techniques</strong></h1>
-	</div>
 	
 	
 	
 	
-		<h2 class="lead text-center divider"><strong>Sentiment Rating System</strong></h2>
+	
+		<h1 class="lead divider"><strong>Sentiment Rating System</strong></h1>
 		<hr/>
 		  <br/>
-		  <p class="lead">This Table shows the rating system of the Sentiment Analysis Algorithm. Five different Machine Learning Algorithms were trained
-		  to predict the sentiment of the given Text. The Confidence of the Result is the average of all Algorithms.</p>                                                                                      
+		  <p class="lead">This Table shows the rating system of the Sentiment Analysis Algorithm. The Confidence of the Result is the average of all Algorithms.</p>                                                                                      
 		  <br/>
 		  <hr/>
 		  <br/>

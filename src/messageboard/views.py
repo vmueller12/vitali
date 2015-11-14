@@ -144,7 +144,7 @@ class SentimentDetail(DetailView):
             
         except:
             pass
-        print(context)
+        #print(context)
         return context
     
     

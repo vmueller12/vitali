@@ -39,13 +39,6 @@ class PosNegCounter(object):
          return pos, neg
         
     
-    def posNegRatio(self):
-        pos, neg = posNegCounter()
-        if pos >= neg:
-            return (int((neg/pos)*100))
-        else:
-            return (int((pos/neg)*100))
-    
     def positiveWords(self):
         return [w for w in self.content if w in self.posList]
     

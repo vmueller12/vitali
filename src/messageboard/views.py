@@ -1,7 +1,7 @@
 from django.views import generic
 from .sentiment import Sentiment
 from .forms import TextFieldForm
-from .models import InputText
+from .models import InputText, SentAnalysis, MachineLearning
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic import CreateView
@@ -11,8 +11,10 @@ from django.core.urlresolvers import reverse
 
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 from .sentiment import Sentiment, TopWordsRetriever
-from .models import SentAnalysis
+from .algorithm import PosNegCounter, MachineLearningClass
+
 
 
     
@@ -52,6 +54,32 @@ class SentimentUpdate(UpdateView):
             sent.save()
         except:
             print("Error")
+            
+        
+        try:
+            #assign new instance to the model
+            ml = MachineLearning()
+            ml.inputText = self.object
+            ml.slug = self.object.slug
+            # creating instance for the MachineLearningClass and PosNegCounter Class
+            mlClass = MachineLearningClass(self.object.content)
+            pnCounter = PosNegCounter(self.object.content)
+            
+    
+            ml.positiveWords = pnCounter.positiveWords()
+            ml.negativeWords = pnCounter.negativeWords()
+            ml.positiveCounter, ml.negativeCounter = pnCounter.posNegCounter()
+            ml.ratioTotalWordsPositive, ml.ratioTotalWordsNegative = pnCounter.ratioTotalWordsPosNeg()
+
+            ml.naiveBayes = mlClass.mlAnalyser()[0]
+            ml.mnb = mlClass.mlAnalyser()[1]
+            ml.bernoulliNB = mlClass.mlAnalyser()[2]
+            ml.confidence = mlClass.outputClassifier()[0]
+            ml.totalCategory = mlClass.outputClassifier()[1]
+            ml.save()
+        except:
+            print("Error")
+            
         return super(SentimentUpdate, self).form_valid(form)
 
 
@@ -83,18 +111,37 @@ class SentimentCreate(CreateView):
             sent.ratioTotalStopwords = float(ins.ratioTotalWordStopWord())
             sent.avWordsSentence = float(ins.avWordsPerSentence())
             sent.save()
+            
+            
         except:
             print("Error")
-        return super(SentimentCreate, self).form_valid(form)
-    
-#    def form_valid(self, form):
-#        self.object = form.save(commit=False)
         
-#        self.object.slug = slugify(self.object.title)
-#        print(self.object.title)
-#        print(self.object.content)
-#        self.object.save()
-#        return super(SentimentCreate, self).form_valid(form)
+        try:
+            #assign new instance to the model
+            ml = MachineLearning()
+            ml.inputText = self.object
+            ml.slug = self.object.slug
+            # creating instance for the MachineLearningClass and PosNegCounter Class
+            mlClass = MachineLearningClass(self.object.content)
+            pnCounter = PosNegCounter(self.object.content)
+            
+    
+            ml.positiveWords = pnCounter.positiveWords()
+            ml.negativeWords = pnCounter.negativeWords()
+            ml.positiveCounter, ml.negativeCounter = pnCounter.posNegCounter()
+            ml.ratioTotalWordsPositive, ml.ratioTotalWordsNegative = pnCounter.ratioTotalWordsPosNeg()
+
+            ml.naiveBayes = mlClass.mlAnalyser()[0]
+            ml.mnb = mlClass.mlAnalyser()[1]
+            ml.bernoulliNB = mlClass.mlAnalyser()[2]
+            ml.confidence = mlClass.outputClassifier()[0]
+            ml.totalCategory = mlClass.outputClassifier()[1]
+            ml.save()
+        except:
+            print("Error")
+            
+        return super(SentimentCreate, self).form_valid(form)
+
     
 class SentimentDetail(DetailView):
     template_name = 'sentiment/detail.html'
@@ -109,8 +156,6 @@ class SentimentDetail(DetailView):
             qrsAnalysis = SentAnalysis.objects.get(slug=self.object.slug)
             topW = TopWordsRetriever(qrsAnalysis.topWords)
             words, num = topW.topWords()
-            #topCl = TopWordsRetriever(qrsAnalysis.topFiveWordsCleaned)
-            #wC, nC = topC1.topWords()
             context['stopWords'] = qrsAnalysis.stopWords
             context['totalWords'] = qrsAnalysis.totalWords
             context['averageWPS'] = int(qrsAnalysis.avWordsSentence)

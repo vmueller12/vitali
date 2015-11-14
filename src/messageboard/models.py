@@ -45,6 +45,26 @@ class SentAnalysis(models.Model):
     
     def __str__(self):
         return self.slug
+    
+    
+class MachineLearning(models.Model):
+    inputText = models.OneToOneField(InputText, primary_key = True)
+    positiveWords = models.TextField()
+    negativeWords = models.TextField()
+    positiveCounter = models.IntegerField()
+    negativeCounter = models.IntegerField()
+    ratioTotalWordsPositive = models.IntegerField()
+    ratioTotalWordsNegative = models.IntegerField()
+    naiveBayes = models.CharField(max_length = 5)
+    mnb = models.CharField(max_length = 5)
+    bernoulliNB = models.CharField(max_length = 5)
+    confidence = models.IntegerField()
+    totalCategory = models.CharField(max_length = 5)
+    slug = models.SlugField()
+    
+    def __str__(self):
+        return self.slug
+    
 
     
     

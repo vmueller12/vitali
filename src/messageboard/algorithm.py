@@ -54,7 +54,7 @@ class PosNegCounter(object):
         return ratiopos, rationeg
     
 
-class MachineLearning(object):
+class MachineLearningClass(object):
     
     def __init__(self, content):
         
@@ -120,7 +120,7 @@ class MachineLearning(object):
             return [66, 'neg']
         
         else:
-            return 'error'
+            return [0, 'error']
 
 
 

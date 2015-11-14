@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import InputText, SentAnalysis
+from .models import InputText, SentAnalysis, MachineLearning
 
 class InputTextModel(admin.ModelAdmin):
     list_display = ("title", "content", "slug", "created",)
@@ -12,4 +12,5 @@ class SentModel(admin.ModelAdmin):
 
 admin.site.register(InputText, InputTextModel)
 admin.site.register(SentAnalysis, SentModel)
+admin.site.register(MachineLearning)
 

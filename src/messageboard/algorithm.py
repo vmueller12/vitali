@@ -14,6 +14,11 @@ class PosNegCounter(object):
         negList = pickle.load(open_file)
         open_file.close()
         
+        open_file = open("pickle/swearing.pickle", "rb")
+        swearing = pickle.load(open_file)
+        open_file.close()
+        
+        
         # A list of positive words
         open_file = open("pickle/positiveWordList.pickle", "rb")
         posList = pickle.load(open_file)
@@ -27,6 +32,7 @@ class PosNegCounter(object):
 
         self.posList = posList
         self.negList = negList
+        self.swearingList = swearing
         self.all_removals = all_removals
         # spliting the text into words, removing all stopwords and characters.
         self.content = [w for w in word_tokenize(content) if w.lower() not in all_removals]
@@ -34,16 +40,21 @@ class PosNegCounter(object):
         
     
     def posNegCounter(self):
-         pos = int(len([w for w in self.content if w in self.posList]))
-         neg = int(len([w for w in self.content if w in self.negList]))
-         return pos, neg
-        
+        pos = int(len([w for w in self.content if w in self.posList]))
+        neg = int(len([w for w in self.content if w in self.negList]))
+        return pos, neg
+    
+    def swearingCount(self):
+        return len([w for w in self.content if w in self.swearingList])
     
     def positiveWords(self):
         return [w for w in self.content if w in self.posList]
     
     def negativeWords(self):
         return [w for w in self.content if w in self.negList]
+    
+    def swearingWords(self):
+        return [w for w in self.content if w in self.swearingList]
     
     def ratioTotalWordsPosNeg(self):
         # returns a ratio total words / positive

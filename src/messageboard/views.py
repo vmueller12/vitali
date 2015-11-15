@@ -154,6 +154,7 @@ class SentimentDetail(DetailView):
         context = super(SentimentDetail, self).get_context_data(**kwargs)
         try:
             qrsAnalysis = SentAnalysis.objects.get(slug=self.object.slug)
+            qrsMachineLearning = MachineLearning.objects.get(slug=self.object.slug)
             topW = TopWordsRetriever(qrsAnalysis.topWords)
             words, num = topW.topWords()
             context['stopWords'] = qrsAnalysis.stopWords

@@ -68,7 +68,7 @@ class SentimentUpdate(UpdateView):
     
             ml.positiveWords = pnCounter.positiveWords()
             ml.negativeWords = pnCounter.negativeWords()
-            ml.swearingWords = pnCounter.swearingList()
+            ml.swearingWords = pnCounter.swearingWords()
             ml.positiveCounter, ml.negativeCounter = pnCounter.posNegCounter()
             ml.swearingCounter = pnCounter.swearingCount()
             ml.ratioTotalWordsPositive, ml.ratioTotalWordsNegative = pnCounter.ratioTotalWordsPosNeg()
@@ -197,6 +197,9 @@ class SentimentDetail(DetailView):
             context['swearingList'] = topCL.wordProcessing(qrsMachineLearning.swearingWords)
             context['positiveList'] = topCL.wordProcessing(qrsMachineLearning.positiveWords)
             context['negativeList'] = topCL.wordProcessing(qrsMachineLearning.negativeWords)
+            context['naive'] = qrsMachineLearning.naiveBayes
+            context['mnb'] = qrsMachineLearning.mnb
+            context['bernoulli'] = qrsMachineLearning.bernoulliNB
             
             
             

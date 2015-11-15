@@ -198,7 +198,7 @@
 	</div>
 	
 		<div class="row">			
-			<br/><br/><br/><br/>
+			<br/><br/><br/><br/>.
 			<div class="col-md-6 text-center">
 				<h2><strong>Average Confidence:</strong></h2>
 				<hr/>
@@ -215,17 +215,76 @@
 				<img class="img-responsive text_center" src="{% static 'vitali/images/portfolio/0starresult.jpg' %}" />
 				<br/>
 				
+			</div>		
+		</div>
+		
+		<div class="row">
+			<div class="col-md-4">
+				<div class="table-responsive">          
+					<table class="table lead">
+						<thead>
+						<tr>
+						  <th>#</th>
+						  <th>Poitive Words Used</th>
+						</tr>
+					  </thead>
+						
+					  <tbody>
+						{% for words in positiveList %}						  
+						<tr>
+						<td>{{forloop.counter}}</td>	
+						  <td>{{words}}</td>
+						</tr>
+						{% endfor %}
+					  </tbody>
+					</table>	
+				</div>
 			</div>
-			
-			
-	</div>
-
-	  
-	  
-	  
-	  
-	  
-	</div>
+			<div class="col-md-4">
+				<div class="table-responsive">          
+					<table class="table lead">
+						<thead>
+						<tr>
+						  <th>#</th>
+						  <th>Negative Words Used</th>
+						</tr>
+					  </thead>
+						
+					  <tbody>
+						{% for words in negativeList %}						  
+						<tr>
+						<td>{{forloop.counter}}</td>	
+						  <td>{{words}}</td>
+						</tr>
+						{% endfor %}
+					  </tbody>
+					</table>	
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="table-responsive">          
+					<table class="table lead">
+						<thead>
+						<tr>
+						  <th>#</th>
+						  <th>Swearing Words Used</th>
+						</tr>
+					  </thead>
+						
+					  <tbody>
+						{% for words in swearingList %}						  
+						<tr>
+						<td>{{forloop.counter}}</td>	
+						  <td>{{words}}</td>
+						</tr>
+						{% endfor %}
+					  </tbody>
+					</table>	
+				</div>
+			</div>
+		</div>
+  
+  
   <hr/>
   <div class="row">
 	<div class="col-md-12 text-center">

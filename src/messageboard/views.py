@@ -68,7 +68,9 @@ class SentimentUpdate(UpdateView):
     
             ml.positiveWords = pnCounter.positiveWords()
             ml.negativeWords = pnCounter.negativeWords()
+            ml.swearingWords = pnCounter.swearingList()
             ml.positiveCounter, ml.negativeCounter = pnCounter.posNegCounter()
+            ml.swearingCounter = pnCounter.swearingCount()
             ml.ratioTotalWordsPositive, ml.ratioTotalWordsNegative = pnCounter.ratioTotalWordsPosNeg()
 
             ml.naiveBayes = mlClass.mlAnalyser()[0]
@@ -128,7 +130,9 @@ class SentimentCreate(CreateView):
     
             ml.positiveWords = pnCounter.positiveWords()
             ml.negativeWords = pnCounter.negativeWords()
+            ml.swearingWords = pnCounter.swearingWords()
             ml.positiveCounter, ml.negativeCounter = pnCounter.posNegCounter()
+            ml.swearingCounter = pnCounter.swearingCount()
             ml.ratioTotalWordsPositive, ml.ratioTotalWordsNegative = pnCounter.ratioTotalWordsPosNeg()
 
             ml.naiveBayes = mlClass.mlAnalyser()[0]
@@ -177,6 +181,8 @@ class SentimentDetail(DetailView):
             wC, nC = topCL.topWords()
             
             
+            
+            
             context['wC1'] = wC[0]
             context['wC2'] = wC[1]
             context['wC3'] = wC[2]
@@ -188,9 +194,15 @@ class SentimentDetail(DetailView):
             context['nC4'] = nC[3]
             context['nC5'] = nC[4]
             
+            context['swearingList'] = topCL.wordProcessing(qrsMachineLearning.swearingWords)
+            context['positiveList'] = topCL.wordProcessing(qrsMachineLearning.positiveWords)
+            context['negativeList'] = topCL.wordProcessing(qrsMachineLearning.negativeWords)
+            
+            
+            
         except:
             pass
-        #print(context)
+        print(context)
         return context
     
     

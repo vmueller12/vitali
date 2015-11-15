@@ -83,7 +83,10 @@ class TopWordsRetriever(object):
 
         return words, num
     
-
+    def wordProcessing(self, con):
+        
+        new_text = con.replace('[','').replace(']','').replace("'",'').replace(',','')
+        return word_tokenize(new_text)
 
         
     

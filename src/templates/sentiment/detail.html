@@ -180,32 +180,44 @@
 			<div class="col-md-4">
 				
 				<h2><strong>Naive Bayes</strong></h2>
-				
+				{% if naive == 'pos' %}
 				<img class="img-responsive text-center" src="{% static 'vitali/images/portfolio/pos.jpg' %}" />
+				{% else %}
+				<img class="img-responsive text-center" src="{% static 'vitali/images/portfolio/neg.jpg' %}" />
+				{%endif%}
 			</div>
 			
 			<div class="col-md-4">
 				<h2><strong>Bayes Multinomial NB</strong></h2>
+				{% if mnb == 'pos' %}
+				<img class="img-responsive text_center" src="{% static 'vitali/images/portfolio/pos.jpg' %}" />
+				{% else %}
 				<img class="img-responsive text_center" src="{% static 'vitali/images/portfolio/neg.jpg' %}" />
-				
+				{% endif %}
 			</div>
 			
 			<div class="col-md-4">
 				<h2><strong>Bernoulli NB</strong></h2>
+				{% if bernoulli == 'pos' %}
 				<img class="img-responsive" src="{% static 'vitali/images/portfolio/pos.jpg' %}" />
-				
+				{% else %}
+				<img class="img-responsive" src="{% static 'vitali/images/portfolio/neg.jpg' %}" />
+				{% endif %}
 			</div>
 			
 	</div>
 	
-		<div class="row">			
-			<br/><br/><br/><br/>.
+		<div class="row divider">			
+		
 			<div class="col-md-6 text-center">
 				<h2><strong>Average Confidence:</strong></h2>
 				<hr/>
 				<br/>
-				
+				{% if totalCat == 'pos' %}
 				<img class="img-responsive text-center" src="{% static 'vitali/images/portfolio/positive.jpg' %}" />
+				{% else %}
+				<img class="img-responsive text-center" src="{% static 'vitali/images/portfolio/negative.jpg' %}" />
+				{% endif %}
 				<br/>
 			</div>
 			
@@ -213,13 +225,21 @@
 				<h2><strong>Average Category:</strong></h2>
 				<hr/>
 				<br/>
+				{% if totalCat == 'pos' and confidence == 100 %}
 				<img class="img-responsive text_center" src="{% static 'vitali/images/portfolio/5starresult.jpg' %}" />
+				{% elif totalCat == 'pos' and confidence == 66 %}
+				<img class="img-responsive text_center" src="{% static 'vitali/images/portfolio/4starresult.jpg' %}" />
+				{% elif totalCat == 'neg' and confidence == 100 %}
+				<img class="img-responsive text_center" src="{% static 'vitali/images/portfolio/0starresult.jpg' %}" />
+				{% elif totalCat == 'neg' and confidence == 66 %}
+				<img class="img-responsive text_center" src="{% static 'vitali/images/portfolio/1starresult.jpg' %}" />
+				{% endif %}
 				<br/>
 				
 			</div>		
 		</div>
 		
-		<div class="row">
+		<div class="row divider">
 			<div class="col-md-4">
 				<div class="table-responsive">          
 					<table class="table lead">
@@ -285,32 +305,47 @@
 			</div>
 		</div>
   
+
+  <div class="container divider" style="padding-bottom: 60px !important;">
+		<div class="row">
+			<div class="col-sm-9 text-center">
+				<h2><strong>Statistics: Positive-, Negative-, Swearing Visualisation </strong></h2>
+				<hr/>
+				<br/>
+				<div id="hc_container4" style="width:100%; height:400px;"></div>
+			</div>
+			<div class="col-sm-3 text-center">
+				<h2><strong>Chose another Chart</strong></h2>
+				<hr/>
+				<br/>
+				<a href='#' class='change_type4' id='pie'><img src="{% static 'vitali/images/portfolio/pie.jpg' %}" /></a>
+				<a href='#' class='change_type4' id='column'><img src="{% static 'vitali/images/portfolio/bar.jpg' %}" /></a>
+				<a href='#' class='change_type4' id='line'><img src="{% static 'vitali/images/portfolio/line.jpg' %}" /></a>
+			</div>
+	  </div>
+  </div>
+  
   
   <hr/>
-  <div class="row">
-	<div class="col-md-12 text-center">
-		<h1>Algorithmic Results</h1>
-		<br/>
-	</div>
-	<div class="col-md-4">
-		<h2>Category & Confidence</h2>
-		<hr/>
-		<p class="lead"><strong><span style="color: green">Cate</span><span style="color: red">gory:</span></strong></p>
-		<p class="lead" style="color: #0000ff"><strong>Confidence:</strong></p>
-	</div>
-	<div class="col-md-4 text-center">
-		<h2>Smilie Rating:</h2>
-		<hr/>
-	</div>
-	<div class="col-md-4 text-center">
-		<h2>Optimize your Writting</h2>
-		<hr/>
-		<a href="{{ object.get_absolute_url }}update/"><img src="{% static 'vitali/images/portfolio/update.jpg' %}" />
-	</div>
-	
-	
-	
-  </div>
+ <div class="container divider" style="padding-bottom: 100px !important;"> 
+		<div class="row">
+			<div class="col-md-4">
+				<h2>CREATE NEW</h2>
+				<a href="{% url 'sent_create' %}"><img src="{% static 'vitali/images/portfolio/back.jpg' %}" /></a>
+
+			</div>
+			<div class="col-md-4 text-center">
+				<h2>DELETE</h2>
+				<a href="{{ object.get_absolute_url }}delete/"><img src="{% static 'vitali/images/portfolio/del.jpg' %}" />
+			</div>
+			<div class="col-md-4 text-center">
+				<h2>UPDATE</h2>
+				<a href="{{ object.get_absolute_url }}update/"><img src="{% static 'vitali/images/portfolio/update.jpg' %}" />
+			</div>
+		</div>
+ </div>
+
+
 </div>
 
 {% endblock content %}
@@ -521,6 +556,70 @@ $('.change_type3').click(function(e) {
 
 </script>
 
+<script>
+$(document).ready(function(){
+
+	function changeType(chart, series, newType) {
+		newType = newType.toLowerCase();
+		for (var i = 0; i < series.length; i++ ) {
+			series = series[0];
+			try {
+				series.chart.addSeries({
+					type: newType,
+					stack: series.stack,
+					yaxis: series.yaxis,
+					name: series.name,
+					color: series.color,
+					data: series.options.data
+				},
+				false
+				)
+				series.remove();
+			} catch(e) {
+				alert(newType & ": " & e);
+			}
+		}
+
+	};
+
+$(function () { 
+    $('#hc_container4').highcharts({
+        title: {
+            text: '{{object.title}}'
+        },
+        xAxis: {
+            categories: ['#Positive Words', '#Negative Words', '#Swearing Words', '#Ratio Total Words/Positive', '#Ratio Total Words/Negative'],
+           showEmpty: false
+        },
+        yAxis: {
+            showEmpty: false
+        },
+        series: [{
+        	type: 'pie',
+        	allowPointSelect: true,
+        	data: [
+        	['#Positive Words', {{poCo}}],
+        	['#Negative Words', {{neCo}}],
+        	['#Swearing Words', {{swCo}}],
+        	['#Ratio Total Words/Positive', {{rtwp}}],
+        	['#Ratio Total Words/Negative', {{rtwn}}],
+        	],
+        	showInLegend: true
+        }]
+    });
+});
+
+
+
+$('.change_type4').click(function(e) {
+	e.preventDefault();
+	chartType = $(this).attr('id');
+    var chart = $("#hc_container4").highcharts();
+	changeType(chart, chart.series, chartType)
+	});
+});
+
+</script>
 
 
 

@@ -200,8 +200,14 @@ class SentimentDetail(DetailView):
             context['naive'] = qrsMachineLearning.naiveBayes
             context['mnb'] = qrsMachineLearning.mnb
             context['bernoulli'] = qrsMachineLearning.bernoulliNB
+            context['totalCat'] = qrsMachineLearning.totalCategory
+            context['confidence'] =qrsMachineLearning.confidence
             
-            
+            context['poCo'] = qrsMachineLearning.positiveCounter
+            context['neCo'] = qrsMachineLearning.negativeCounter
+            context['swCo'] = qrsMachineLearning.swearingCounter
+            context['rtwp'] = qrsMachineLearning.ratioTotalWordsPositive
+            context['rtwn'] = qrsMachineLearning.ratioTotalWordsNegative
             
         except:
             pass

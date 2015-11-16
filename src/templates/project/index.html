@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Vitalis Projects{% endblock title %}
+{% block content %}
+<div class="container">
+<section id="portfolio">
+    <div class="row">
+                <ul class="portfolio-filter text-center">
+                    <li><a class="btn btn-default active" href="#" data-filter="*">All</a></li>
+                    <li><a class="btn btn-default" href="#" data-filter=".ml">Machine Learning</a></li>
+                    <li><a class="btn btn-default" href="#" data-filter=".design">Ecommerce</a></li>
+                    <li><a class="btn btn-default" href="#" data-filter=".folio">Social Network Application</a></li>
+                    <li><a class="btn btn-default" href="#" data-filter=".logos">Landing & Sharing</a></li>
+                    <li><a class="btn btn-default" href="#" data-filter=".mobile">Others</a></li>
+                </ul><!--/#portfolio-filter-->
+                
+                <div class="portfolio-items isotope" style="position: relative; overflow: hidden; height: 2524px;">
+                    <div class="col-sm-6 portfolio-item ml isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/17.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% url 'sent_list' %}"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/17.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Sentiment Analysis</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6 portfolio-item ml isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(580px, 0px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/18.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% url 'soon' %}"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/18.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Stock Market Prediction for Value Investor</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-sm-6 portfolio-item logos isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 631px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/19.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% url 'soon' %}"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/19.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Landing & Sharing Website</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6 portfolio-item design isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(580px, 631px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/20.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="http://www.topdogexperts.com"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/20.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Top Dog Experts - eCommerce</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6 portfolio-item design isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1262px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/21.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% url 'soon' %}"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/21.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Ecommerce - Recommender System</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 portfolio-item folio isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(580px, 1262px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/22.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% url 'soon' %}"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/22.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Global Packer</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6 portfolio-item folio isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1893px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/23.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{% url 'soon' %}"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/23.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Match Maker & Recommender System</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6 portfolio-item mobile isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(580px, 1893px, 0px);">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{% static 'vitali/images/portfolio/24.jpg' %}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="http://www.kommune-liebt-netz.de"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="{% static 'vitali/images/portfolio/24.jpg' %}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>Kommune Liebt Netz</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+    </div>
+</div>
+</section>
+{% endblock content %}

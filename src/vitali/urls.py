@@ -32,10 +32,12 @@ from messageboard.views import SentimentDetail, SentimentList, SentimentCreate, 
 
 from contact.views import EmailCreate
 from newsletter.views import NewsletterView
+from projects.views import ProjectView
 
 urlpatterns = [
-
+    # Admin App
     url(r'^admin/', include(admin.site.urls)),
+    #Sentiment App
     url(r'^sentiment/(?P<slug>[-\w]+)/delete/$', SentimentDelete.as_view(), name="sent_delete"),
     url(r'^sentiment/(?P<slug>[-\w]+)/update/$', SentimentUpdate.as_view(), name="sent_update"),
     url(r'^sentiment/create/$', SentimentCreate.as_view(), name="sent_create"),
@@ -44,11 +46,16 @@ urlpatterns = [
     #Email or Contact URL
     url(r'^contact/$', EmailCreate.as_view(), name="email_create"),
     url(r'^contact/thanks/$', NewsletterView.as_view(), name="contact_thanks"),
+    # Project Page
+    url(r'^projects/$', ProjectView.as_view(), name="projects"),
+    # Comming Soon
+    url(r'^comming-soon/$', TemplateView.as_view(template_name='comming-soon.html'), name="soon"),
     
     #url(r'^feed/$', LatestPosts(), name='feed'),
     #url(r'^(?P<slug>\S+)$', BlogDetail.as_view(), name='blog_detail'),
-    url(r'^blog/$', include(blog_urls)),
+    #url(r'^blog/$', include(blog_urls)),
     #url(r'^messages/$', include(mess_urls)),
     url(r'^markdown/', include("django_markdown.urls")),
+    # Home Page
     url(r'^$', TemplateView.as_view(template_name = 'vitali/index.html'), name='home'),
 ]

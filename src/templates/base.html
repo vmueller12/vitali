@@ -60,9 +60,9 @@
                         <li class="active"><a href="{% url 'home' %}">Vitali</a></li>
 						<li><a href="#">About Me</a></li>
                         <li><a href="#">Technologies & Skills</a>                 
-                        <li><a href="#">Projects</a></li>
+                        <li><a href="{% url 'projects' %}">Projects</a></li>
 						
-						<!--<li><a href="{% url 'blog_list' %}">Blog</a></li>-->
+						
 						<li><a href="{% url 'email_create' %}">Contact Us</a></li>
                     </ul>
                 </div>
@@ -91,9 +91,11 @@
 
     <script type="text/javascript" src="{% static 'vitali/js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'vitali/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'vitali/js/jquery.isotope.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'vitali/js/lightbox.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'vitali/js/wow.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'vitali/js/main.js' %}"></script>
+	
 	{% block javascript %}{% endblock javascript %}
 </body>
 </html>

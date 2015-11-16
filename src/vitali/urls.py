@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 
+
 from blog import urls as blog_urls
 from blog.feed import LatestPosts
 from blog.views import BlogDetail
@@ -28,6 +29,9 @@ from django.conf.urls.static import static
 
 from messageboard.views import SentimentDetail, SentimentList, SentimentCreate, SentimentDelete, SentimentUpdate
 
+
+from contact.views import EmailCreate
+
 urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
@@ -36,6 +40,9 @@ urlpatterns = [
     url(r'^sentiment/create/$', SentimentCreate.as_view(), name="sent_create"),
     url(r'^sentiment/(?P<slug>[-\w]+)/$', SentimentDetail.as_view(), name="sent_detail"),
     url(r'^sentiment/$', SentimentList.as_view(), name="sent_list"),
+    #Email or Contact URL
+    url(r'^contact/$', EmailCreate.as_view(), name="email_create"),
+    url(r'^contact/thanks/$', TemplateView.as_view(template_name='contact/thanks.html'), name="contact_thanks"),
     
     #url(r'^feed/$', LatestPosts(), name='feed'),
     #url(r'^(?P<slug>\S+)$', BlogDetail.as_view(), name='blog_detail'),

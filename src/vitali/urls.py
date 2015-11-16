@@ -31,6 +31,7 @@ from messageboard.views import SentimentDetail, SentimentList, SentimentCreate, 
 
 
 from contact.views import EmailCreate
+from newsletter.views import NewsletterView
 
 urlpatterns = [
 
@@ -42,7 +43,7 @@ urlpatterns = [
     url(r'^sentiment/$', SentimentList.as_view(), name="sent_list"),
     #Email or Contact URL
     url(r'^contact/$', EmailCreate.as_view(), name="email_create"),
-    url(r'^contact/thanks/$', TemplateView.as_view(template_name='contact/thanks.html'), name="contact_thanks"),
+    url(r'^contact/thanks/$', NewsletterView.as_view(), name="contact_thanks"),
     
     #url(r'^feed/$', LatestPosts(), name='feed'),
     #url(r'^(?P<slug>\S+)$', BlogDetail.as_view(), name='blog_detail'),

@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'blog',
     'messageboard',
     'contact',
+    'newsletter',
 )
 
 MIDDLEWARE_CLASSES = (

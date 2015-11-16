@@ -4,6 +4,7 @@ from django.db import models
 class Email(models.Model):
     name = models.CharField(max_length=128, blank=False)
     subject = models.CharField(max_length=255, blank=True)
+    email = models.EmailField(blank=False)
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     

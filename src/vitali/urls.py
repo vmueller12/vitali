@@ -35,6 +35,7 @@ from newsletter.views import NewsletterView
 from projects.views import ProjectView
 from about.views import AboutView
 from hireme.views import HireView
+from .views import HomeView
 
 urlpatterns = [
     # Admin App
@@ -63,5 +64,6 @@ urlpatterns = [
     #url(r'^messages/$', include(mess_urls)),
     url(r'^markdown/', include("django_markdown.urls")),
     # Home Page
-    url(r'^$', TemplateView.as_view(template_name = 'vitali/index.html'), name='home'),
+    #url(r'^$', TemplateView.as_view(template_name = 'vitali/index.html'), name='home'),
+    url(r'^$', HomeView.as_view(), name='home'),
 ]

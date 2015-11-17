@@ -61,6 +61,7 @@ class SentimentUpdate(UpdateView):
             ml = MachineLearning()
             ml.inputText = self.object
             ml.slug = self.object.slug
+            print(ml.slug)
             # creating instance for the MachineLearningClass and PosNegCounter Class
             mlClass = MachineLearningClass(self.object.content)
             pnCounter = PosNegCounter(self.object.content)
@@ -123,6 +124,7 @@ class SentimentCreate(CreateView):
             ml = MachineLearning()
             ml.inputText = self.object
             ml.slug = self.object.slug
+            print(ml.slug)
             # creating instance for the MachineLearningClass and PosNegCounter Class
             mlClass = MachineLearningClass(self.object.content)
             pnCounter = PosNegCounter(self.object.content)
@@ -211,7 +213,7 @@ class SentimentDetail(DetailView):
             
         except:
             pass
-        #print(context)
+        print(context)
         return context
     
     

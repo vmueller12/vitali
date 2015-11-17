@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'messageboard',
     'contact',
     'newsletter',
+    'hireme',
 )
 
 MIDDLEWARE_CLASSES = (

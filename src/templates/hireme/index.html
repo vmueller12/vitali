@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<section class="padding-top">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 lead text-center">
+            <p>Please fill out the form, so I can assess your offer and will come back to you as soon as possible.</p>
+            <p>I am looking forward to work with you.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+
+<section class="padding-top" style="padding-bottom: 100px !important;">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <form method="post" action="">{% csrf_token %}
+                 {{form|crispy}}
+                <input type="submit" value="Hire Me" class="btn btn-success btn-lg" />
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+
+
+{% endblock content %}

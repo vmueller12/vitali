@@ -33,6 +33,8 @@ from messageboard.views import SentimentDetail, SentimentList, SentimentCreate, 
 from contact.views import EmailCreate
 from newsletter.views import NewsletterView
 from projects.views import ProjectView
+from about.views import AboutView
+from hireme.views import HireView
 
 urlpatterns = [
     # Admin App
@@ -49,7 +51,11 @@ urlpatterns = [
     # Project Page
     url(r'^projects/$', ProjectView.as_view(), name="projects"),
     # Comming Soon
-    url(r'^comming-soon/$', TemplateView.as_view(template_name='comming-soon.html'), name="soon"),
+    url(r'^comming-soon/$', TemplateView.as_view(template_name='coming-soon.html'), name="soon"),
+    #About
+    url(r'^about/$', AboutView.as_view(), name="about"),
+    #HireMe
+    url(r'^hireme/$', HireView.as_view(), name="hireme"),
     
     #url(r'^feed/$', LatestPosts(), name='feed'),
     #url(r'^(?P<slug>\S+)$', BlogDetail.as_view(), name='blog_detail'),

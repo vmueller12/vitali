@@ -83,8 +83,8 @@ class SentimentUpdate(UpdateView):
             print("Error")
             
         return super(SentimentUpdate, self).form_valid(form)
-
-
+    
+    
 class SentimentCreate(CreateView):
     form_class = TextFieldForm
     template_name = "sentiment/index.html"
@@ -92,13 +92,19 @@ class SentimentCreate(CreateView):
     #fields = ['title', 'content']
     
     def form_valid(self, form):
+        # Do not save yet
         self.object = form.save(commit=False)
+        try:
+            # if this characters are in title remove
+           self.object.title = self.object.title.replace(u"\u2018", "'").replace(u"\u2019", "'")
+        except:
+            pass
         self.object.slug = slugify(self.object.title)
         self.object.save()
-        # create a instance for Sentiment()
+        # create a instance for Sentiment()    
         try:
-            sent = SentAnalysis()
-            ins = Sentiment(self.object.content)
+            sent = SentAnalysis()            
+            ins = Sentiment(self.object.content)          
             sent.inputText = self.object
             sent.totalWords =  int(ins.totalWords())
             sent.totalSentences = int(ins.totalSentences())
@@ -159,8 +165,14 @@ class SentimentDetail(DetailView):
        
         context = super(SentimentDetail, self).get_context_data(**kwargs)
         try:
-            qrsAnalysis = SentAnalysis.objects.get(slug=self.object.slug)
-            qrsMachineLearning = MachineLearning.objects.get(slug=self.object.slug)
+            try:
+                qrsAnalysis = SentAnalysis.objects.get(slug=self.object.slug)
+            except:
+                pass
+            try:
+                qrsMachineLearning = MachineLearning.objects.get(slug=self.object.slug)
+            except:
+                pass
             topW = TopWordsRetriever(qrsAnalysis.topWords)
             words, num = topW.topWords()
             context['stopWords'] = qrsAnalysis.stopWords
@@ -195,6 +207,9 @@ class SentimentDetail(DetailView):
             context['nC3'] = nC[2]
             context['nC4'] = nC[3]
             context['nC5'] = nC[4]
+        except:
+            pass
+        try:
             
             context['swearingList'] = topCL.wordProcessing(qrsMachineLearning.swearingWords)
             context['positiveList'] = topCL.wordProcessing(qrsMachineLearning.positiveWords)
@@ -210,10 +225,10 @@ class SentimentDetail(DetailView):
             context['swCo'] = qrsMachineLearning.swearingCounter
             context['rtwp'] = qrsMachineLearning.ratioTotalWordsPositive
             context['rtwn'] = qrsMachineLearning.ratioTotalWordsNegative
-            
         except:
-            pass
-        print(context)
+            pass    
+        
+        #print(context)
         return context
     
     

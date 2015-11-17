@@ -88,13 +88,13 @@ jQuery(function($) {'use strict';
 
 		map = new GMaps({
 			el: '#gmap',
-			lat: 43.04446,
-			lng: -76.130791,
+			lat: 51.492015,
+			lng: -0.223603,
 			scrollwheel:false,
-			zoom: 16,
+			zoom: 14,
 			zoomControl : false,
 			panControl : false,
-			streetViewControl : false,
+			streetViewControl : true,
 			mapTypeControl: false,
 			overviewMapControl: false,
 			clickable: false
